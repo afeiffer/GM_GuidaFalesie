@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="it" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida Falesie Arrampicata per Allievi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                        },
+                        rock: {
+                            700: '#334155',
+                            800: '#1e293b',
+                            850: '#172033',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+        }
+        .accordion-content.active {
+            max-height: 1200px;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .rotate-icon {
+            transition: transform 0.3s ease;
+        }
+        .rotate-icon.active {
+            transform: rotate(180deg);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="bg-rock-900 text-slate-100 font-sans min-h-full flex flex-col antialiased">
+
+    <header class="bg-rock-850/90 backdrop-blur-md border-b border-rock-700/80 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-brand-600 text-white p-2.5 rounded-xl shadow-lg shadow-brand-600/20 flex items-center justify-center">
+                    <i class="fa-solid fa-mountain text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-lg leading-tight tracking-wide text-white">Giovane Montagna Venezia - Guida Falesie</h1>
+                    <p class="text-xs text-slate-400">Percorso formativo di arrampicata 2025-26</p>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6">
+
+         <!-- Presentazione Banner -->
+        <div class="mb-6 bg-gradient-to-r from-slate-800 via-rock-800 to-slate-800 border border-rock-700 rounded-2xl p-5 shadow-xl relative overflow-hidden">
+            <div class="absolute right-0 top-0 translate-x-4 -translate-y-4 opacity-10 pointer-events-none">
+                <i class="fa-solid fa-mountain text-9xl text-white"></i>
+            </div>
+            <div class="relative z-10 max-w-2xl">
+                <h2 class="text-xl font-bold text-white mb-1.5 flex items-center gap-2">
+                    
+                    <i class="fa-solid fa-person-hiking text-brand-500"></i> Agli allievi del corso di arrampicata 
+                </h2>
+                <p class="text-slate-300 text-sm leading-relaxed mb-3">
+                    Condivido con voi questa guida alle falesie che abbiamo visitato durante questi due anni di corso. 
+                   
+                    Vuole essere anche una testimonianza del percorso che abbiamo fatto insieme. <br> 
+                    Buona arrampicata!
+                    
+                </p>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <span class="bg-slate-900/80 text-slate-300 px-3 py-1 rounded-lg border border-slate-700/80 flex items-center gap-1.5">
+                        <i class="fa-solid fa-layer-group text-brand-400"></i> <span id="total-falesie-count">${falesia.length}</span> Falesie disponibili
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+<!-- SEZIONE CONSIGLI DIDATTICI & SICUREZZA -->
+<section class="mb-8">
+  <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-hidden transition-all duration-300">
+    
+    <!-- Intestazione della Sezione (Cliccabile per aprire/chiudere) -->
+    <div onclick="toggleGuide()" class="p-5 sm:p-6 bg-gradient-to-r from-emerald-900/40 via-slate-900 to-slate-900 border-b border-slate-800/80 flex flex-wrap items-center justify-between gap-4 cursor-pointer hover:bg-slate-800/50 transition">
+      <div class="flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-lg">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div>
+          <h2 class="text-xl font-bold text-white tracking-wide flex items-center gap-2">
+            Consigli Didattici e regole di educazione, rispetto e sicurezza.
+          </h2>
+        </div>
+      </div>
+      
+      <button id="guide-toggle-btn" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-emerald-400 flex items-center gap-2 transition">
+        <span>Nascondi Guida</span>
+        <i id="guide-toggle-icon" class="fa-solid fa-chevron-up transition-transform duration-300"></i>
+      </button>
+    </div>
+
+    <!-- Contenuto Espandibile (Griglia a 3 Colonne) -->
+    <div id="guide-content" class="p-6 transition-all duration-300">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Colonna 1: Sicurezza e Controlli -->
+        <div class="bg-slate-950/60 p-5 rounded-xl border border-slate-800/80 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-emerald-400 font-bold text-base mb-3 border-b border-slate-800 pb-2">
+              <i class="fa-solid fa-clipboard-check"></i>
+              <span>1. Sicurezza</span>
+            </div>
+            <ul class="space-y-2.5 text-xs text-slate-300">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 text-[10px]"></i>
+                <span><strong>Partner Check:</strong> Verifica reciproca tra compagni, nodo a otto fatto correttamente, corda inserita correttamente nel dispositivo di assicurazione.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 text-[10px]"></i>
+                <span><strong>Nodo a fine corda:</strong> Fare sempre il nodo a fine corda possibilemte all'asola della sacca porta corda.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 text-[10px]"></i>
+                <span><strong>Casco:</strong> Indossare il casco anche se gli altri non lo fanno, prestare particolareattenzione quando si sta alla base della parete. </span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 text-[10px]"></i>
+                <span><strong>Verifica Ancoraggi:</strong> Controllare lo stato di usura del moschettone di sosta, utilizare se necessario un proprio moschettone se la via viene ripetuta più volte.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/60 text-[11px] text-amber-400/90 font-medium flex items-center gap-1.5">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Divertiamoci usando la testa!</span>
+          </div>
+        </div>
+
+        <!-- Colonna 2: Etichetta in Falesia -->
+        <div class="bg-slate-950/60 p-5 rounded-xl border border-slate-800/80 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-emerald-400 font-bold text-base mb-3 border-b border-slate-800 pb-2">
+              <i class="fa-solid fa-hands-holding-circle"></i>
+              <span>2. Educazione e Rispetto</span>
+            </div>
+            <ul class="space-y-2.5 text-xs text-slate-300">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 text-[10px]"></i>
+                <span><strong>Ordine:</strong> Manteniamo le nostre cose in ordine e rispettiamo lo spazio degli altri.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 text-[10px]"></i>
+                <span><strong>Parcheggio:</strong> Parcheggiare con ordine, rispettando le proprietà private e lasciamo spazio agli altri.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 text-[10px]"></i>
+                <span><strong>Rispetto dei Luoghi:</strong> Portare a casa i rifiuti e esplechiamo i bisogni fisiologi al bar.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 text-[10px]"></i>
+                <span><strong>Evitate rumoti inutili:</strong> Comandi chiari e brevi, senza urla che possono disturbare in particolare chi sta scalando.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/60 text-[11px] text-slate-400 font-medium flex items-center gap-1.5">
+            <i class="fa-solid fa-leaf text-emerald-400"></i>
+            <span>Portiamo con noi la nostra educazione e rispetto.</span>
+          </div>
+        </div>
+
+        <!-- Colonna 3: Progressione Didattica -->
+        <div class="bg-slate-950/60 p-5 rounded-xl border border-slate-800/80 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-emerald-400 font-bold text-base mb-3 border-b border-slate-800 pb-2">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span>3. Consigli Didattici</span>
+            </div>
+            <ul class="space-y-2.5 text-xs text-slate-300">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 text-[10px]"></i>
+                <span><strong>Uso del bacino:</strong> Antiversione e Retroversione del bacino o "mossa del pincio". 
+                    Esco fuori col bacino per vedere i piedi, torno dentro con il bacino per terminiare il movimento e raggiungere una posizione di equilibrio.</span>
+              </li>
+             <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 text-[10px]"></i>
+                <span><strong>Progressione:</strong> Separa il movimento delle mani da quello dei piedi.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 text-[10px]"></i>
+                <span><strong>Uso dei piedi:</strong> Ricorda passi corti, senti l'esigenza del passo iniziale centrale, parti da una posizione di equilibrio e arriva ad un'altra posizione di equilibrio. Non smettere di muovere i piedi finchè non la trovi. 
+                Non staccare gli occhi dai piedi finchè non finisci il movimento.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 text-[10px]"></i>
+                <span><strong>Lettura della via:</strong> Analizza la linea di salita prima di iniziare, fatti un'idea della difficoltà e dei punti critici.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/60 text-[11px] text-emerald-400 font-medium flex items-center gap-1.5">
+            <i class="fa-solid fa-bullseye"></i>
+            <span>L'obiettivo è scalare bene, poi il grado viene da sè.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+        <!-- Welcome Banner -->
+        <div class="mb-6 bg-gradient-to-r from-slate-800 via-rock-800 to-slate-800 border border-rock-700 rounded-2xl p-5 shadow-xl relative overflow-hidden">
+            <div class="absolute right-0 top-0 translate-x-4 -translate-y-4 opacity-10 pointer-events-none">
+                <i class="fa-solid fa-compass-drafting text-9xl text-white"></i>
+            </div>
+            <div class="relative z-10 max-w-2xl">
+                <h2 class="text-xl font-bold text-white mb-1.5 flex items-center gap-2">
+                    <i class="fa-solid fa-map-location-dot text-brand-500"></i> Schede Falesie visitate durante il corso.
+                </h2>
+                <p class="text-slate-300 text-sm leading-relaxed mb-3">
+                    Indicazioni generali sul tipo di roccia, l'esposizione, il periodo consigliato e i link GPS diretti per raggiungere le falesie dove siamo stati con il corso.
+                </p>
+            <div class="hidden sm:flex items-center space-x-2">
+                <span class="text-xs px-3 py-1 bg-brand-500/10 border border-brand-500/30 text-brand-400 font-medium rounded-full flex items-center gap-1.5">
+                    <span class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>
+                    8 Falesie Inserite
+                </span>
+            </div>
+            </div>
+        </div>
+
+        <!-- Filter and Search Section -->
+        <section class="bg-rock-800 border border-rock-700/80 rounded-2xl p-4 mb-6 shadow-md">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+                <!-- Search Input -->
+                <div class="md:col-span-5 relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="search-input" placeholder="Cerca per nome, regione, provincia, roccia..." 
+                        class="w-full pl-10 pr-4 py-2.5 bg-rock-900 border border-rock-700 rounded-xl text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition">
+                </div>
+
+                <!-- Exposure Filter -->
+                <div class="md:col-span-3">
+                    <select id="exposure-filter" class="w-full px-3 py-2.5 bg-rock-900 border border-rock-700 rounded-xl text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition">
+                        <option value="">Tutte le Esposizioni</option>
+                        <option value="Sud">Sud / Soleggiata</option>
+                        <option value="Nord">Nord / Ombra</option>
+                        <option value="Ovest">Ovest</option>
+                        <option value="Est">Est</option>
+                    </select>
+                </div>
+
+                <!-- Season Filter -->
+                <div class="md:col-span-4 flex gap-2">
+                    <select id="season-filter" class="w-full px-3 py-2.5 bg-rock-900 border border-rock-700 rounded-xl text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition">
+                        <option value="">Tutti i Periodi</option>
+                        <option value="Inverno">Inverno</option>
+                        <option value="Estate">Estate</option>
+                        <option value="Primavera">Primavera / Autunno</option>
+                        <option value="Tutto l'anno">Tutto l'anno</option>
+                    </select>
+
+                    <button id="reset-filters" class="px-3.5 py-2.5 bg-rock-700 hover:bg-slate-600 text-slate-200 text-sm font-medium rounded-xl transition flex items-center justify-center shrink-0" title="Resetta filtri">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <div id="falesie-container" class="space-y-6">
+            <!-- Dynamic Content Injected via JS -->
+        </div>
+
+        <!-- No Results Message -->
+        <div id="no-results" class="hidden text-center py-16 bg-rock-800/50 border border-rock-700/50 rounded-2xl">
+            <i class="fa-solid fa-compass text-4xl text-slate-500 mb-3"></i>
+            <h3 class="text-lg font-semibold text-slate-300">Nessuna falesia trovata</h3>
+            <p class="text-slate-400 text-sm mt-1">Prova a modificare i criteri di ricerca o resetta i filtri.</p>
+        </div>
+
+    </main>
+
+    <footer class="bg-rock-850 border-t border-rock-700/80 py-6 mt-12 text-center text-xs text-slate-400">
+        <div class="max-w-6xl mx-auto px-4 space-y-2">
+            <p><i class="fa-solid fa-graduation-cap text-amber-500 mr-1"></i> 
+            <p><strong>© 2026 GM Venezia</strong> - Guida Falesie Arrampicata. Ad uso didattico e informativo per gli allievi.</p>
+        </div>
+    </footer>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-brand-600 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none">
+        <i class="fa-solid fa-check-circle text-lg"></i>
+        <span id="toast-message" class="text-sm font-medium">Coordinate verificate!</span>
+    </div>
+
+    <script>
+        // Updated Falesie Dataset (No sectors/routes tables)
+        const falesieData = [
+            {
+                id: 'erto-no-big',
+                nome: 'Erto - Settore No Big',
+                localita: 'Erto e Casso (PN), Friuli Venezia Giulia',
+                roccia: 'Calcare. Vie di placca, muri verticali e strapiombi.',
+                quota: '750m',
+                esposizione: 'Sud / Sud-Ovest (Soleggiata)',
+                periodo: 'Primavera, Autunno, Inverno (nelle giornate di sole)',
+                avvicinamentoTempo: 'meno di 1 min.',
+                avvicinamentoDiff: 'Immediato dal parcheggio',
+                gradiPrevalenti: '3c - 6c',
+                gpsParcheggio: '46.2821, 12.3556',
+                linkGoogleMaps: 'https://www.google.com/maps/search/?api=1&query=46.2821,12.3556',
+                linkAppleMaps: 'http://maps.apple.com/?q=46.2821,12.3556',
+                descrizione: 'La falesia più comoda che ci sia, con parcheggio a pochi metri dall\'attacco delle vie. La chiodatura ottima e ravvicinata, la rende ideale per i primi passi da capocordata. Ricordo con piacere alcuni di voi scalare da primi su "Per i più piccini" e "Melissa". &#128516;',
+                accessoDettagli: 'Sulla strada SR251 tra Longarone ed Erto. Il settore si trova direttamente a ridosso della strada nei pressi del bar/ristorante locale. Il parcheggio si trova a pochissimi metri dall\'attacco delle vie.',
+            },
+            {
+                id: 'lumignano',
+                nome: 'Lumignano',
+                localita: 'Longare - Colli Berici (VI), Veneto',
+                roccia: 'Calcare compatto con prevalenza di placche a buchi e gocce.',
+                quota: '150m - 250m',
+                esposizione: 'Sud / Sud-Est (Calda e riparata)',
+                periodo: 'Inverno e Mezze Stagioni',
+                avvicinamentoTempo: '10 - 20 min',
+                avvicinamentoDiff: 'Facile / Sentiero collinare',
+                gradiPrevalenti: '5b - 8b',
+                gpsParcheggio: '45.4598, 11.5812',
+                linkGoogleMaps: 'https://www.google.com/maps/search/?api=1&query=45.4598,11.5812',
+                linkAppleMaps: 'http://maps.apple.com/?q=45.4598,11.5812',
+                descrizione: 'Grande falesia che si divide in vari settori, dal severo settore "Classica" con vie storiche e severe nella gradazione, al settore Naso di Bicio dove abbiamo scalato noi, con vie più facili.',
+                accessoDettagli: 'Parcheggiare nei pressi della piazza di Lumignano o nei parcheggi dedicati ai climber. Seguire i sentieri segnalati verso le pareti che sovrastano il paese.',
+            },
+            {
+                id: 'duino',
+                nome: 'Falesia di Duino',
+                localita: 'Duino-Aurisina (TS), Friuli Venezia Giulia',
+                roccia: 'Calcare carsico a picco sul mare',
+                quota: '50m - 80m',
+                esposizione: 'Sud (Soleggiata e marina)',
+                periodo: 'Autunno, Inverno, Primavera',
+                avvicinamentoTempo: '15 - 20 min',
+                avvicinamentoDiff: 'Facile / Sentiero panoramico (Sentiero Rilke)',
+                gradiPrevalenti: '4c - 7b',
+                gpsParcheggio: '45.7725, 13.6062',
+                linkGoogleMaps: 'https://www.google.com/maps/search/?api=1&query=45.7725,13.6062',
+                linkAppleMaps: 'http://maps.apple.com/?q=45.7725,13.6062',
+                descrizione: 'Spettacolare falesia del Carso giuliano affacciata sul Golfo di Trieste. Arrampicare con il mare sotto i piedi credo sia un\'esperienza unica. Ideale per approcciare l\'arrampicata su placca in aderenza. Le foto più belle le abbiamo scattate qui, con il mare e il castello di Duino sullo sfondo.',
+                accessoDettagli: 'Si accede percorrendo un tratto del rinomato Sentiero Rilke tra Sistiana e Duino. Una traccia porta alle soste per la calata in corda doppia',
+            },
+            {
+                id: 'frassene-laghetti',
+                nome: 'Frassenè - Laghetti di Voltago',
+                localita: 'Voltago Agordino (BL), Veneto - Dolomiti',
+                roccia: 'Calcare e Dolomia compatto',
+                quota: '1095m',
+                esposizione: 'Tutte le esposizioni / Ombra del bosco',
+                periodo: 'Tarda Primavera, Estate, Inizio Autunno',
+                avvicinamentoTempo: '2 min',
+                avvicinamentoDiff: 'Molto facile / Pianeggiante nel parco',
+                gradiPrevalenti: '4a - 7c',
+                gpsParcheggio: '46.2625, 11.9841',
+                linkGoogleMaps: 'https://www.google.com/maps/search/?api=1&query=46.2625,11.9841',
+                linkAppleMaps: 'http://maps.apple.com/?q=46.2625,11.9841',
+                descrizione: 'Falesia immersa in un fresco parco ai piedi dell\'Agner. Le vie sono molto belle e consentono una scalata didattica e divertente. I primi passi da capocordata li abbiamo fatti qui. &#128526;' ,
+                accessoDettagli: 'Parcheggio comodo presso l\'area ricreativa e parco dei Laghetti di Frassenè. I settori sono distribuiti a pochissimi minuti a piedi tra gli alberi.',
+            },
+            {
+                id: 'santa-felicita',
+                nome: 'Valle di Santa Felicita',
+                localita: 'Romano d\'Ezzelino (VI), Veneto - Monte Grappa',
+                roccia: 'Calcare compatto.',
+                quota: '150m',
+                esposizione: 'Est / Ovest / Nord-Est',
+                periodo: 'Primavera, Estate, Autunno',
+                avvicinamentoTempo: '10 - 30 min',
+                avvicinamentoDiff: 'Molto facile e pianeggiante per il settore classico.',
+                gradiPrevalenti: '3b - 7a',
+                gpsParcheggio: '45.8118, 11.7762',
+                linkGoogleMaps: 'https://www.google.com/maps/search/?api=1&query=45.8118,11.7762',
+                linkAppleMaps: 'http://maps.apple.com/?q=45.8118,11.7762',
+                descrizione: 'La storica "palestra di roccia" alle pendici del Monte Grappa per intere generazioni di alpinisti e arrampicatori del veneto. Il settore classico con vie facili si presta ai primi passi da capocordata con la necessità di sapersi proteggere con protezioni mobili in quanto non ci sono spit, ma solo le soste attrezzate. Possibilità anche di approcciare la scalata a più tiri. Gli altri settori sono chiodati con spit. Qui abbiamo mosso i primi passi di arrampicata insieme. &#129392;',
+                accessoDettagli: 'Dal parcheggio in fondo alla Valle di Santa Felicita si percorre la stradina sterrata pianeggiante. Le pareti si trovano su entrambi i lati del fondo valle.',
+            },
+            {
+                id: 'ca-verde',
+                nome: 'Ca\' Verde',
+                localita: 'Costermano sul Garda (VR), Veneto',
+                roccia: 'Calcare grigio a placche e gocce',
+                quota: '250m',
+                esposizione: 'Ovest / Nord-Ovest (Ombra mattutina)',
+                periodo: 'Primavera, Autunno, Pomeriggi d\'Estate',
+                avvicinamentoTempo: '10 min',
+                avvicinamentoDiff: 'Facile / Sentiero nel bosco',
+                gradiPrevalenti: '5a - 7a',
+                gpsParcheggio: '45.5802, 10.7421',
+                linkGoogleMaps: 'https://www.google.com/maps/search/?api=1&query=45.5802,10.7421',
+                linkAppleMaps: 'http://maps.apple.com/?q=45.5802,10.7421',
+                descrizione: 'Immersa nelle colline che sovrastano il Lago di Garda, Ca\' Verde è una tranquilla falesia immersa nel verde con vie divertenti e di soddisfazione.',
+                accessoDettagli: 'Raggiungere Costermano e seguire per la località Ca\' Verde. Lasciare l\'auto negli spiazzi segnalati e seguire il sentiero che si inoltra nella macchia di bosco.',
+            },
+            {
+                id: 'lagazuoi-piccolo',
+                nome: 'Lagazuoi Piccolo',
+                localita: 'Passo Falzarego / Cortina (BL), Veneto - Dolomiti',
+                roccia: 'Dolomia di eccellente qualità con prevalenza di placche e pareti verticali',
+                quota: '2300m',
+                esposizione: 'Sud (Completamente soleggiata)',
+                periodo: 'Estate (Da Giugno a Settembre)',
+                avvicinamentoTempo: '20-30 min',
+                avvicinamentoDiff: 'Medio / Sentiero e tratti di ghiaione',
+                gradiPrevalenti: '4a - 7b (Ambiente di alta montagna)',
+                gpsParcheggio: '46.5261, 12.0051',
+                linkGoogleMaps: 'https://www.google.com/maps/search/?api=1&query=46.5261,12.0051',
+                linkAppleMaps: 'http://maps.apple.com/?q=46.5261,12.0051',
+                descrizione: 'Falesia di alta quota in contesto Dolomitico, ai piedi delle pareti del Piccolo Lagazuoi. Panorama spettacolare sui gruppi dolomitici circostanti. Dolomia di ottima qualità.',
+                accessoDettagli: 'Parcheggiare al Passo Falzarego (stazione funivia Lagazuoi). Seguire la traccia di sentiero verso la parete del Piccolo Lagazuoi fino alla base dei monotiri.',
+            },
+            {
+                id: 'tessari',
+                nome: 'Tessari (Val d\'Adige)',
+                localita: 'Rivoli Veronese (VR), Veneto',
+                roccia: 'Calcare scolpito a gocce, buchi, tacche e fessure.',
+                quota: '150m',
+                esposizione: 'Est / Sud-Est',
+                periodo: 'Inverno, Autunno, Primavera',
+                avvicinamentoTempo: '5 min',
+                avvicinamentoDiff: 'Facile / Sentiero lungo fiume/parete',
+                gradiPrevalenti: '4a - 6c',
+                gpsParcheggio: '45.5892, 10.8145',
+                linkGoogleMaps: 'https://www.google.com/maps/search/?api=1&query=45.5892,10.8145',
+                linkAppleMaps: 'http://maps.apple.com/?q=45.5892,10.8145',
+                descrizione: 'Situata nella suggestiva Val d\'Adige, la falesia di Tessari ha il difetto di essere vicina all\'autostrada del Brennero, ma l\'ambiente è comunque molto bello e le vie sono divertenti. La zona è altresì frequentata per la presenze di molte vie di più tiri, sportive e non.',
+                accessoDettagli: 'Raggiungere la frazione di Tessari (Rivoli Veronese). Parcheggiare nei posti consentiti e proseguire a piedi lungo la traccia che costeggia la parete.',
+            }
+        ];
+
+        function copyGPS(coords) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(coords);
+            } else {
+                const el = document.createElement('textarea');
+                el.value = coords;
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+            }
+            showToast(`Coordinate (${coords}) copiate!`);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.classList.remove('active');
+            } else {
+                content.classList.add('active');
+                icon.classList.add('active');
+            }
+        }
+
+        function renderFalesie(data) {
+            const container = document.getElementById('falesie-container');
+            const noResults = document.getElementById('no-results');
+            container.innerHTML = '';
+
+            document.getElementById('total-falesie-count').textContent = data.length;
+
+            if (data.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            data.forEach((falesia, fIndex) => {
+                const cardHtml = `
+                <div class="bg-rock-800 border border-rock-700/80 rounded-2xl shadow-xl overflow-hidden transition-all duration-200">
+                    
+                    <!-- Falesia Main Header -->
+                    <div class="p-5 md:p-6 bg-slate-800/90 border-b border-rock-700/80">
+                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                            <div>
+                                <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                                    <span class="text-slate-400 text-xs font-medium flex items-center gap-1">
+                                        <i class="fa-solid fa-location-dot text-rose-500"></i> ${falesia.localita}
+                                    </span>
+                                </div>
+                                <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight">${falesia.nome}</h2>
+                                <p class="text-slate-300 text-sm mt-2 leading-relaxed">${falesia.descrizione}</p>
+                            </div>
+
+                            <!-- GPS Actions Bar -->
+                            <div class="flex flex-wrap lg:flex-col gap-2 shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-rock-700">
+                                <a href="${falesia.linkGoogleMaps}" target="_blank" rel="noopener noreferrer" 
+                                   class="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs rounded-xl shadow-md transition">
+                                    <i class="fa-solid fa-map-location-dot text-sm"></i> Google Maps
+                                </a>
+                                <a href="${falesia.linkAppleMaps}" target="_blank" rel="noopener noreferrer" 
+                                   class="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-white font-semibold text-xs rounded-xl transition">
+                                    <i class="fa-solid fa-apple text-sm"></i> Apple Maps
+                                </a>
+                                <button onclick="copyGPS('${falesia.gpsParcheggio}')" 
+                                        class="w-full inline-flex items-center justify-center gap-2 px-4 py-2 bg-rock-900 hover:bg-rock-700 text-slate-300 font-medium text-xs rounded-xl border border-rock-700 transition">
+                                    <i class="fa-solid fa-copy text-xs"></i> GPS: ${falesia.gpsParcheggio}
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Technical Info Badge Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-4 border-t border-rock-700/60 text-xs">
+                            <div class="bg-rock-900/90 p-3 rounded-xl border border-rock-700/80">
+                                <div class="text-slate-400 mb-0.5"><i class="fa-solid fa-mountain text-amber-400 mr-1"></i> Tipo Roccia</div>
+                                <div class="font-semibold text-slate-200 " title="${falesia.roccia}">${falesia.roccia}</div>
+                            </div>
+                            <div class="bg-rock-900/90 p-3 rounded-xl border border-rock-700/80">
+                                <div class="text-slate-400 mb-0.5"><i class="fa-solid fa-sun text-amber-400 mr-1"></i> Esposizione</div>
+                                <div class="font-semibold text-slate-200">${falesia.esposizione}</div>
+                            </div>
+                            <div class="bg-rock-900/90 p-3 rounded-xl border border-rock-700/80">
+                                <div class="text-slate-400 mb-0.5"><i class="fa-solid fa-calendar-days text-sky-400 mr-1"></i> Periodo</div>
+                                <div class="font-semibold text-slate-200">${falesia.periodo}</div>
+                            </div>
+                            <div class="bg-rock-900/90 p-3 rounded-xl border border-rock-700/80">
+                                <div class="text-slate-400 mb-0.5"><i class="fa-solid fa-person-walking text-emerald-400 mr-1"></i> Avvicinamento</div>
+                                <div class="font-semibold text-slate-200">${falesia.avvicinamentoTempo} (${falesia.quota})</div>
+                            </div>
+                            <br>
+                            </div>
+                                <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-500/10 border border-brand-500/30 text-brand-300    rounded-lg font-medium">
+                                        <i class="fa-solid fa-chart-line text-brand-400"></i> Gradi Prevalenti: <strong>${falesia.gradiPrevalenti}</strong>
+                            </div>
+                    </div>
+
+                    <!-- Accordion Details Section -->
+                    <div class="divide-y divide-rock-700/60">
+                        
+                        
+
+                        <!-- Accordion Tab 2: Accesso & Parcheggio -->
+                        <div class="bg-rock-800/40">
+                            <button onclick="toggleAccordion('accesso-${fIndex}')" 
+                                    class="w-full text-left p-4 md:px-6 flex items-center justify-between hover:bg-rock-700/40 transition group">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-lg bg-rock-700 border border-rock-600 flex items-center justify-center font-bold text-xs text-sky-400 group-hover:border-sky-500 transition">
+                                        <i class="fa-solid fa-route"></i>
+                                    </div>
+                                    <h4 class="font-bold text-sm text-white group-hover:text-sky-400 transition">
+                                        Accesso Stradale & Sentiero di Avvicinamento
+                                    </h4>
+                                </div>
+                                <i id="icon-accesso-${fIndex}" class="fa-solid fa-chevron-down text-slate-400 rotate-icon transition-transform ml-2"></i>
+                            </button>
+                            <div id="content-accesso-${fIndex}" class="accordion-content">
+                                <div class="p-4 md:p-6 bg-rock-900/60 border-t border-rock-700/50 text-xs text-slate-300 leading-relaxed space-y-2">
+                                    <p><strong>Come arrivare:</strong> ${falesia.accessoDettagli}</p>
+                                    <p><strong>Difficoltà sentiero:</strong> ${falesia.avvicinamentoDiff}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+                </div>
+                `;
+                container.innerHTML += cardHtml;
+            });
+        }
+
+        function filterFalesie() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const selectedExposure = document.getElementById('exposure-filter').value.toLowerCase();
+            const selectedSeason = document.getElementById('season-filter').value.toLowerCase();
+
+            const filtered = falesieData.filter(falesia => {
+                const matchesQuery = !query || 
+                    falesia.nome.toLowerCase().includes(query) ||
+                    falesia.localita.toLowerCase().includes(query) ||
+                    falesia.roccia.toLowerCase().includes(query) ||
+                    falesia.descrizione.toLowerCase().includes(query);
+
+                const matchesExposure = !selectedExposure || falesia.esposizione.toLowerCase().includes(selectedExposure);
+
+                const matchesSeason = !selectedSeason || falesia.periodo.toLowerCase().includes(selectedSeason) || falesia.periodo.toLowerCase().includes("tutto l'anno");
+
+                return matchesQuery && matchesExposure && matchesSeason;
+            });
+
+            renderFalesie(filtered);
+        }
+
+        // Event Listeners
+        document.getElementById('search-input').addEventListener('input', filterFalesie);
+        document.getElementById('exposure-filter').addEventListener('change', filterFalesie);
+        document.getElementById('season-filter').addEventListener('change', filterFalesie);
+
+        document.getElementById('reset-filters').addEventListener('click', () => {
+            document.getElementById('search-input').value = '';
+            document.getElementById('exposure-filter').value = '';
+            document.getElementById('season-filter').value = '';
+            renderFalesie(falesieData);
+        });
+
+        // Initialize App on Load
+        window.onload = function() {
+            renderFalesie(falesieData);
+            // Open first section of the first falesia by default
+            setTimeout(() => {
+                toggleAccordion('roccia-0');
+            }, 200);
+        };
+
+        function toggleGuide() {
+            const content = document.getElementById('guide-content');
+            const icon = document.getElementById('guide-toggle-icon');
+            const btnText = document.querySelector('#guide-toggle-btn span');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.remove('rotate-180');
+            if (btnText) btnText.textContent = 'Nascondi Guida';
+            } else {
+                content.classList.add('hidden');
+                icon.classList.add('rotate-180');
+                if (btnText) btnText.textContent = 'Mostra Guida';
+            }
+        }
+    </script>
+
+</body>
+</html>
