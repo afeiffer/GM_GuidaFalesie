@@ -351,7 +351,7 @@
         // Funzione di inizializzazione modificata per leggere il file .json
         window.onload = async function() {
             try {
-                const response = await fetch('datifalesie.json');
+                const response = await fetch('dati/falesie.json');
                 if (!response.ok) {
                     throw new Error('Errore nel caricamento del file delle falesie');
                 }
