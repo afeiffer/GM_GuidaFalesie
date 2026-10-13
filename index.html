@@ -78,15 +78,6 @@
             background: #94a3b8;
         }
     </style>
-
-            <!-- Collegamento al Manifest per PWA -->
-        <link rel="manifest" href="manifest.json">
-        <meta name="theme-color" content="#0c4a6e">
-
-        <!-- Icona per iOS (Safari su iPhone) -->
-        <link rel="apple-touch-icon" href="img/logo.png">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans min-h-full flex flex-col antialiased">
 
@@ -94,7 +85,9 @@
     <header class="bg-sky-900 border-b border-sky-800 sticky top-0 z-50 shadow-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-               
+                <div class="bg-amber-400 text-amber-950 p-2.5 rounded-xl shadow-md flex items-center justify-center">
+                    <i class="fa-solid fa-mountain text-xl"></i>
+                </div>
                 <div>
                     <!-- Immagine/Logo -->
                     <img src="img/logo.png" alt="Logo Giovane Montagna" class="h-10 w-auto object-contain rounded-lg">
@@ -258,6 +251,296 @@
             </div>
         </section>
 
+        <!-- SEZIONE NODI E MANOVRE UTILI -->
+        <section class="mb-8">
+        <div class="bg-white border border-sky-200 rounded-2xl shadow-sm overflow-hidden transition-all duration-300">
+            
+            <!-- Intestazione della Sezione (Cliccabile per aprire/chiudere) -->
+            <div onclick="toggleManovre()" class="p-5 sm:p-6 bg-sky-50/70 border-b border-sky-200 flex flex-wrap items-center justify-between gap-4 cursor-pointer hover:bg-sky-100/60 transition">
+            <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-amber-400 text-amber-950 border border-amber-300 flex items-center justify-center text-lg shadow-sm">
+                <i class="fa-solid fa-bezier-curve"></i>
+                </div>
+                <div>
+                <h2 class="text-lg sm:text-xl font-bold text-sky-900 tracking-wide flex items-center gap-2">
+                    Nodi e Manovre di Corda Utili
+                </h2>
+                </div>
+            </div>
+            
+            <button id="manovre-toggle-btn" class="px-3.5 py-1.5 rounded-lg bg-white hover:bg-slate-50 border border-sky-200 text-xs font-semibold text-sky-700 flex items-center gap-2 shadow-sm transition">
+                <span>Nascondi Sezione</span>
+                <i id="manovre-toggle-icon" class="fa-solid fa-chevron-up transition-transform duration-300"></i>
+            </button>
+            </div>
+
+            <!-- Contenuto Espandibile (Griglia delle Manovre) -->
+            <div id="manovre-content" class="p-6 transition-all duration-300">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+            <!-- Scheda 1: Nodo a Otto (Legatura) -->
+            <div class="bg-slate-50 p-5 rounded-xl border border-sky-100 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-2 text-sky-800 font-bold text-base mb-3 border-b border-sky-200 pb-2">
+                <i class="fa-solid fa-link text-amber-500"></i>
+                <span>1. Nodo a Otto (o nodo delle guide con frizione)</span>
+                </div>
+                <p class="text-xs text-slate-700 leading-relaxed mb-3">
+                Il nodo fondamentale per legarsi all'imbracatura in arrampicata e alpinismo. Va effettuato vicino all'imbragatura, ha un'ottima capacità di tenuta 
+                e un immediato controllo visivo della corretta esecuzione.
+                </p>
+
+                <!-- SEQUENZA 4 IMMAGINI (GRIGLIA 2x2) -->
+                <div class="my-3 bg-white p-3 rounded-lg border border-sky-200">
+                <span class="block text-[11px] font-bold text-sky-900 mb-2 text-center">Sequenza di esecuzione (1 to 4):</span>
+                
+                <div class="grid grid-cols-2 gap-2">
+                    <!-- Immagine 1 -->
+                    <div class="bg-slate-50 p-1.5 rounded border border-slate-200 text-center">
+                    <img src="img/Otto_1.png" alt="Nodo a otto - Passo 1" loading="lazy" class="h-50 mx-auto object-contain rounded">
+                    <span class="block text-[9px] text-slate-500 mt-1 font-semibold">1. Nodo a otto iniziale</span>
+                    </div>
+                    <!-- Immagine 2 -->
+                    <div class="bg-slate-50 p-1.5 rounded border border-slate-200 text-center">
+                    <img src="img/Otto_2.png" alt="Nodo a otto - Passo 2" loading="lazy" class="h-50 mx-auto object-contain rounded">
+                    <span class="block text-[9px] text-slate-500 mt-1 font-semibold">2. Inserimento negli anelli dell'imbrago</span>
+                    </div>
+                    <!-- Immagine 3 -->
+                    <div class="bg-slate-50 p-1.5 rounded border border-slate-200 text-center">
+                    <img src="img/Otto_3.png" alt="Nodo a otto - Passo 3" loading="lazy" class="h-50 mx-auto object-contain rounded">
+                    <span class="block text-[9px] text-slate-500 mt-1 font-semibold">3. Ripasso</span>
+                    </div>
+                    <!-- Immagine 4 -->
+                    <div class="bg-slate-50 p-1.5 rounded border border-slate-200 text-center">
+                    <img src="img/Otto_4.png" alt="Nodo a otto - Passo 4" loading="lazy" class="h-50 mx-auto object-contain rounded">
+                    <span class="block text-[9px] text-slate-500 mt-1 font-semibold">4. Nodo a otto ripassato</span>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+            <div class="mt-4 pt-3 border-t border-sky-200 text-[11px] text-sky-800 font-semibold flex items-center gap-1.5">
+                <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                <span>Lasciare almeno 10 cm di capo libero.</span>
+            </div>
+            </div>
+
+                <!-- Scheda 2: Dispositivi di assicurazione -->
+            <div class="bg-slate-50 p-5 rounded-xl border border-sky-100 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-2 text-sky-800 font-bold text-base mb-3 border-b border-sky-200 pb-2">
+                <i class="fa-solid fa-circle-nodes text-amber-500"></i>
+                <span>2. Dispositivi di assicurazione</span>
+                </div>
+                <p class="text-xs text-slate-700 leading-relaxed mb-3">
+                I dispositivi di assicurazione sono necessari per fare sicura al compagno di cordata, si dividono in:
+                </p>
+                <ul class="space-y-2 text-xs text-slate-600 mb-4">
+                <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-sky-600 mt-0.5 text-[10px]"></i>
+                    <span><b>Dinamici (es. reverso o secchiello):</b> dissipano l'energia della caduta tramite lo sfregamento della corda intorno al moschettone e richiedono l'azione frenante costante della mano dell'assicuratore.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-sky-600 mt-0.5 text-[10px]"></i>
+                    <span><b>A frenaggio assistito (es. Grigri):</b> aiutano ad arrestare la corda in caso di caduta grazie a un meccanismo interno (a camma o basculante) che blocca lo scorrimento.</span>
+                </li>
+                </ul>
+
+                <!-- LINK UTILI AI MANUALI PDF -->
+                <div class="my-3 flex flex-wrap gap-2">
+                <a href="pdf/grigri.pdf" target="_blank" rel="noopener noreferrer" 
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-sky-50 text-sky-900 text-xs font-semibold rounded-lg border border-sky-200 shadow-2xs transition">
+                    <i class="fa-solid fa-file-pdf text-rose-500"></i> Istruzioni PDF Grigri
+                </a>
+                <a href="pdf/reverso.pdf" target="_blank" rel="noopener noreferrer" 
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-sky-50 text-sky-900 text-xs font-semibold rounded-lg border border-sky-200 shadow-2xs transition">
+                    <i class="fa-solid fa-file-pdf text-rose-500"></i> Istruzioni PDF Reverso
+                </a>
+                </div>
+
+                <!-- BOX IMMAGINE ESPLICATIVA IN BASSO -->
+                <div class="mt-3 bg-white p-2.5 rounded-lg border border-sky-200 text-center">
+                <img src="img/partnercheck.png" 
+                    alt="Confronto dispositivi di assicurazione" 
+                    loading="lazy" 
+                    class="max-h-80 mx-auto object-contain rounded">
+                <span class="block text-[10px] text-slate-400 mt-1 font-semibold">Controllo incrociato</span>
+                </div>
+
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-sky-200 text-[11px] text-amber-800 font-semibold flex items-center gap-1.5">
+                <i class="fa-solid fa-triangle-exclamation text-amber-500"></i>
+                <span>Controllare sempre due volte prima di iniziare a scalare</span>
+            </div>
+            </div>
+
+                <!-- Scheda 3: Gestione delle Soste -->
+                <div class="bg-slate-50 p-5 rounded-xl border border-sky-100 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 text-sky-800 font-bold text-base mb-3 border-b border-sky-200 pb-2">
+                    <i class="fa-solid fa-shield-halved text-amber-500"></i>
+                    <span>3. Realizzazione e Gestione Soste</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed mb-3">
+                    La sosta è il punto attrezzato o da attrezzare lungo una via dove la cordata si ferma, può essere composta da:
+                        <ul class="space-y-2 text-xs text-slate-600">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-sky-600 mt-0.5 text-[10px]"></i>
+                            <span>ancoraggi naturali (alberi, spuntoni di roccia, clessidre)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-sky-600 mt-0.5 text-[10px]"></i>
+                            <span>ancoraggi artificiali (spit, chiodi, fix, friend, nut)</span>
+                        </li>
+                        </ul>
+                    </p>
+                    <p class="text-xs text-slate-700 leading-relaxed mb-3">i punti devono essere collegati tra loro con anelli di cordino, fettucce o catene per garantire solidità e ridondanza.</p>
+                    <!-- Sezione Tipologie con Pro e Contro -->
+                <p class="text-xs text-slate-700 leading-relaxed mb-3 font-semibold">Tipologie e caratteristiche:</p>
+                <ul class="space-y-4 text-xs text-slate-600">
+                    
+                    <!-- Sosta mobile -->
+                    <li class="bg-white p-3 rounded-xl border border-sky-100 shadow-2xs space-y-2">
+                        <div class="flex items-center gap-2 font-bold text-sky-950 text-sm border-b border-sky-100 pb-1.5">
+                            <i class="fa-solid fa-mountain text-amber-500"></i>
+                            <span>Sosta mobile</span>
+                        </div>
+                    
+                        <!-- Box Pro & Contro -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                            <!-- PRO -->
+                            <div class="bg-emerald-50/80 p-2 rounded-lg border border-emerald-200/60">
+                                <span class="font-bold text-emerald-800 text-[10px] flex items-center gap-1 mb-1">
+                                    <i class="fa-solid fa-circle-check text-emerald-600"></i> Vantaggi (Pro)
+                                </span>
+                                <p class="text-[10px] text-emerald-900 leading-tight">Suddivide il carico in modo più o meno uguale su tutti i punti di ancoraggio.</p>
+                                <br>
+                                <p class="text-[10px] text-emerald-900 leading-tight">Ripartisce il carico indipendentemente dalla direzione in cui avviene il volo.</p>
+                                <br>
+                                <p class="text-[10px] text-emerald-900 leading-tight">Facilità e velocità nella costuzione.</p>
+                            </div>
+                            <!-- CONTRO -->
+                            <div class="bg-amber-50/80 p-2 rounded-lg border border-amber-200/60">
+                                <span class="font-bold text-amber-800 text-[10px] flex items-center gap-1 mb-1">
+                                    <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Svantaggi (Contro)
+                                </span>
+                                <p class="text-[10px] text-amber-900 leading-tight">Se uno dei rami del cordino si rompe, l’intera sosta è compromessa.</p>
+                                <br>
+                                <p class="text-[10px] text-amber-900 leading-tight">In caso di fuoriuscita di un ancoraggio, l’allungamento del cordino provoca una forte sollecitazione a strappo sugli ancoraggi rimanenti.</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Sosta fissa -->
+                    <li class="bg-white p-3 rounded-xl border border-sky-100 shadow-2xs space-y-2">
+                        <div class="flex items-center gap-2 font-bold text-sky-950 text-sm border-b border-sky-100 pb-1.5">
+                            <i class="fa-solid fa-shield-halved text-amber-500"></i>
+                            <span>Sosta fissa</span>
+                        </div>
+                        
+                        <!-- Box Pro & Contro -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                            <!-- PRO -->
+                            <div class="bg-emerald-50/80 p-2 rounded-lg border border-emerald-200/60">
+                                <span class="font-bold text-emerald-800 text-[10px] flex items-center gap-1 mb-1">
+                                    <i class="fa-solid fa-circle-check text-emerald-600"></i> Vantaggi (Pro)
+                                </span>
+                                <p class="text-[10px] text-emerald-900 leading-tight">In caso di rottura di un ramo del cordino, la tenuta della sosta è mantenuta.</p>
+                                <br>
+                                <p class="text-[10px] text-emerald-900 leading-tight">Se un ancoraggio cede, il restante ancoraggio non subisce un forte impatto.</p>
+                            </div>
+                            <!-- CONTRO -->
+                            <div class="bg-amber-50/80 p-2 rounded-lg border border-amber-200/60">
+                                <span class="font-bold text-amber-800 text-[10px] flex items-center gap-1 mb-1">
+                                    <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Svantaggi (Contro)
+                                </span>
+                                <p class="text-[10px] text-amber-900 leading-tight">Non è multiridezionale.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- IMMAGINI SOSTE -->
+                <div class="my-3 bg-white p-3 rounded-lg border border-sky-200">
+                <span class="block text-[11px] font-bold text-sky-900 mb-2 text-center">Soste esemplificative</span>
+                
+                <div class="grid grid-cols-2 gap-2">
+                    <!-- Immagine 1 -->
+                    <div class="bg-slate-50 p-1.5 rounded border border-slate-200 text-center">
+                    <img src="img/sosta_mobile.png" alt="Sosta mobile" loading="lazy" class="h-100 mx-auto object-contain rounded">
+                    <span class="block text-[9px] text-slate-500 mt-1 font-semibold">1.Sosta mobile</span>
+                    </div>
+                    <!-- Immagine 2 -->
+                    <div class="bg-slate-50 p-1.5 rounded border border-slate-200 text-center">
+                    <img src="img/sosta_fissa.png" alt="Sosta fissa" loading="lazy" class="h-100 mx-auto object-contain rounded">
+                    <span class="block text-[9px] text-slate-500 mt-1 font-semibold">2. Sosta fissa</span>
+                    </div>
+                </div>
+                </div>
+
+                </div>
+                <div class="mt-4 pt-3 border-t border-sky-200 text-[11px] text-sky-800 font-semibold flex items-center gap-1.5">
+                    <i class="fa-solid fa-bullseye text-amber-500"></i>
+                    <span>Massima attenzione ai moschettoni con ghiera chiusa!</span>
+                </div>
+                </div>
+
+
+
+
+                <!-- Scheda 4: Calata in Corda Doppia -->
+                <div class="bg-slate-50 p-5 rounded-xl border border-sky-100 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 text-sky-800 font-bold text-base mb-3 border-b border-sky-200 pb-2">
+                    <i class="fa-solid fa-angles-down text-amber-500"></i>
+                    <span>4. Manovra di Corda Doppia</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed mb-3">
+                    La corda doppia è una manovra fondamentale di discesa in alpinismo e arrampicata, utilizzata quando non è possibile o sicuro scendere a piedi o disarrampicando.
+                    </p>
+                    <p class="text-xs text-slate-700 leading-relaxed mb-3">Materiale necessario:</p>
+
+                    <ul class="space-y-2 text-xs text-slate-600">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-circle-check text-sky-600 mt-0.5 text-[10px]"></i>
+                        <span>Discensore a secchiello o piastrina</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-circle-check text-sky-600 mt-0.5 text-[10px]"></i>
+                        <span>Cordino in kevlar per nodo autobloccante</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-circle-check text-sky-600 mt-0.5 text-[10px]"></i>
+                        <span>Longe (cordino in kevlar lungo o fettuccia cucita)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-circle-check text-sky-600 mt-0.5 text-[10px]"></i>
+                        <span>Tre/quattro moschettoni</span>
+                    </li>
+                    </ul>
+                </div>
+
+            <!-- BOX IMMAGINE ESPLICATIVA UNICA -->
+                <div class="my-3 bg-white p-3 rounded-lg border border-sky-200 text-center">
+                <img src="img/doppia.jpg" 
+                    alt="Schema generale manovra di corda doppia" 
+                    loading="lazy" 
+                    class="max-h-100 mx-auto object-contain rounded">
+                <span class="block text-[10px] text-slate-400 mt-1 font-semibold">Schema generale della discesa in corda doppia</span>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-sky-200 text-[11px] text-amber-800 font-semibold flex items-center gap-1.5">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-500"></i>
+                    <span>Verificare il recupero delle corde prima di iniziare la discesa.</span>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+        </div>
+        </section>
+
         <!-- WELCOME BANNER SCHEDE -->
         <div class="mb-6 bg-white border border-sky-200 rounded-2xl p-5 shadow-sm relative overflow-hidden">
             <div class="absolute right-0 top-0 translate-x-4 -translate-y-4 opacity-5 pointer-events-none">
@@ -346,27 +629,6 @@
     </div>
 
     <script>
-        /*let falesieData = [];
-
-        // Funzione di inizializzazione modificata per leggere il file .json
-        window.onload = async function() {
-            try {
-                const response = await fetch('dati/falesie.json');
-                if (!response.ok) {
-                    throw new Error('Errore nel caricamento del file delle falesie');
-                }
-                falesieData = await response.json();
-                renderFalesie(falesieData);
-            } catch (error) {
-                console.error('Si è verificato un errore:', error);
-                document.getElementById('falesie-container').innerHTML = `
-                    <div class="text-center py-8 text-rose-600 font-semibold text-sm">
-                        Impossibile caricare i dati delle falesie. Assicurati di aprire la pagina tramite un server locale o un hosting.
-                    </div>`;
-            }
-        };*/
-
-        // Variabile globale che conterrà i dati caricati dal file esterno
         const falesieData = [
             {
                 id: 'erto-no-big',
@@ -384,6 +646,7 @@
                 linkAppleMaps: 'http://maps.apple.com/?q=46.2821,12.3556',
                 descrizione: 'La falesia più comoda che ci sia, con parcheggio a pochi metri dall\'attacco delle vie. La chiodatura ottima e ravvicinata, la rende ideale per i primi passi da capocordata. Ricordo con piacere alcuni di voi scalare da primi su "Per i più piccini" e "Melissa". &#128516;',
                 accessoDettagli: 'Sulla strada SR251 tra Longarone ed Erto. Il settore si trova direttamente a ridosso della strada nei pressi del bar/ristorante locale. Il parcheggio si trova a pochissimi metri dall\'attacco delle vie.',
+                fileVie: 'dati/erto.json',
             },
             {
                 id: 'lumignano',
@@ -401,6 +664,7 @@
                 linkAppleMaps: 'http://maps.apple.com/?q=45.4598,11.5812',
                 descrizione: 'Grande falesia, laboratorio dell\'alta difficoltà, che si divide in vari settori, dal severo settore "Classica" con vie storiche e severe nella gradazione, al settore Naso di Bicio con vie più facili, dove abbiamo scalato noi.',
                 accessoDettagli: 'Parcheggiare nei pressi della piazza di Lumignano o nei parcheggi dedicati. Seguire i sentieri segnalati verso le pareti che sovrastano il paese.',
+                fileVie: 'dati/nasodibicio.json',
             },
             {
                 id: 'duino',
@@ -435,6 +699,7 @@
                 linkAppleMaps: 'http://maps.apple.com/?q=46.2625,11.9841',
                 descrizione: 'Falesia immersa in un fresco parco ai piedi dell\'Agner. Le vie sono molto belle e consentono una scalata didattica e divertente. I primi passi da capocordata li abbiamo fatti qui. &#128526;' ,
                 accessoDettagli: 'Parcheggio comodo presso l\'area ricreativa e parco dei Laghetti di Frassenè. I settori sono distribuiti a pochissimi minuti a piedi tra gli alberi.',
+                fileVie: 'dati/frassene.json',
             },
             {
                 id: 'santa-felicita',
@@ -452,6 +717,7 @@
                 linkAppleMaps: 'http://maps.apple.com/?q=45.8118,11.7762',
                 descrizione: 'La storica "palestra di roccia" alle pendici del Monte Grappa per intere generazioni di alpinisti e arrampicatori del veneto. Il settore classico con vie facili si presta ai primi passi da capocordata con la necessità di sapersi proteggere con protezioni mobili in quanto non ci sono spit, ma solo le soste attrezzate. Possibilità anche di approcciare la scalata a più tiri. Gli altri settori sono chiodati con spit. Qui abbiamo mosso i primi passi di arrampicata insieme. &#129392;',
                 accessoDettagli: 'Dal parcheggio in fondo alla Valle di Santa Felicita si percorre la stradina sterrata pianeggiante. Le pareti si trovano su entrambi i lati del fondo valle.',
+                fileVie: 'dati/santafelicita.json',
             },
             {
                 id: 'ca-verde',
@@ -469,6 +735,7 @@
                 linkAppleMaps: 'http://maps.apple.com/?q=45.5802,10.7421',
                 descrizione: 'Immersa nelle colline che sovrastano il Lago di Garda, Ca\' Verde è una tranquilla falesia immersa nel verde con vie divertenti e di soddisfazione.',
                 accessoDettagli: 'Raggiungere Costermano e seguire per la località Ca\' Verde. Lasciare l\'auto negli spiazzi segnalati e seguire il sentiero che si inoltra nella macchia di bosco.',
+                fileVie: 'dati/caverde.json',
             },
             {
                 id: 'lagazuoi-piccolo',
@@ -503,6 +770,7 @@
                 linkAppleMaps: 'http://maps.apple.com/?q=45.5892,10.8145',
                 descrizione: 'Situata nella suggestiva Val d\'Adige, la falesia di Tessari ha il difetto di essere vicina all\'autostrada del Brennero, ma l\'ambiente è comunque molto bello e le vie sono divertenti. La zona è altresì frequentata per la presenze di molte vie di più tiri, sportive e non.',
                 accessoDettagli: 'Raggiungere la frazione di Tessari (Rivoli Veronese). Parcheggiare nei posti consentiti e proseguire a piedi lungo la traccia che costeggia la parete.',
+                fileVie: 'dati/tessari.json',
             }
         ];
 
@@ -641,6 +909,28 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Accordion Tab Vie della Falesia -->
+                    <div class="bg-white border-t border-sky-100">
+                        <button onclick="toggleAccordion('vie-${fIndex}'); caricaVieFalesia('${falesia.fileVie}', 'container-vie-${fIndex}')" 
+                                class="w-full text-left p-4 md:px-6 flex items-center justify-between hover:bg-sky-50 transition group">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-sky-100 border border-sky-200 flex items-center justify-center font-bold text-xs text-sky-700 group-hover:border-sky-400 transition">
+                                    <i class="fa-solid fa-list-ul"></i>
+                                </div>
+                                <h4 class="font-bold text-sm text-sky-950 group-hover:text-sky-700 transition">
+                                    Elenco Vie Principali & Gradi
+                                </h4>
+                            </div>
+                            <i id="icon-vie-${fIndex}" class="fa-solid fa-chevron-down text-slate-400 rotate-icon transition-transform ml-2"></i>
+                        </button>
+                        <div id="content-vie-${fIndex}" class="accordion-content">
+                            <!-- Aggiunto max-h-60 e overflow-y-auto per la sbarra di scorrimento verticale -->
+                            <div id="container-vie-${fIndex}" class="p-4 md:p-6 bg-slate-50 border-t border-sky-100 max-h-60 overflow-y-auto">
+                                <!-- I dati delle vie verranno iniettati qui dinamicamente -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 `;
                 container.innerHTML += cardHtml;
@@ -699,6 +989,61 @@
                 content.classList.add('hidden');
                 icon.classList.add('rotate-180');
                 if (btnText) btnText.textContent = 'Mostra Guida';
+            }
+        }
+
+        // Funzione per caricare dinamicamente le vie di una specifica falesia al click
+        async function caricaVieFalesia(fileVie, containerId) {
+            const container = document.getElementById(containerId);
+            
+            // Se il container ha già dei contenuti, non ricaricare ogni volta
+            if (container.dataset.loaded === "true") return;
+
+            try {
+                container.innerHTML = `<p class="text-xs text-slate-500 italic py-2">Caricamento elenco vie in corso...</p>`;
+                const response = await fetch(fileVie);
+                if (!response.ok) throw new Error("File vie non trovato");
+                
+                const vie = await response.json();
+                
+                if (vie.length === 0) {
+                    container.innerHTML = `<p class="text-xs text-slate-500">Nessuna via inserita per questa falesia.</p>`;
+                    return;
+                }
+
+                // Costruiamo la tabella o la lista delle vie
+                let html = `<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">`;
+                vie.forEach(via => {
+                    html += `
+                        <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border border-sky-100 shadow-2xs">
+                            <span class="font-semibold text-sky-950">${via.nome}</span>
+                            <span class="px-2 py-0.5 bg-sky-100 text-sky-900 rounded font-bold text-xs">${via.grado}</span>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+                
+                container.innerHTML = html;
+                container.dataset.loaded = "true"; // Segna come caricato
+            } catch (error) {
+                console.error(error);
+                container.innerHTML = `<p class="text-xs text-rose-600">Impossibile caricare l'elenco delle vie.</p>`;
+            }
+        }
+
+                function toggleManovre() {
+            const content = document.getElementById('manovre-content');
+            const icon = document.getElementById('manovre-toggle-icon');
+            const btnText = document.querySelector('#manovre-toggle-btn span');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.remove('rotate-180');
+                if (btnText) btnText.textContent = 'Nascondi Sezione';
+            } else {
+                content.classList.add('hidden');
+                icon.classList.add('rotate-180');
+                if (btnText) btnText.textContent = 'Mostra Sezione';
             }
         }
     </script>
