@@ -140,7 +140,7 @@
                     </div>
                     
                     <button id="guide-toggle-btn" class="px-3.5 py-1.5 rounded-lg bg-white hover:bg-slate-50 border border-sky-200 text-xs font-semibold text-sky-700 flex items-center gap-2 shadow-sm transition">
-                        <span>Nascondi Guida</span>
+                        <span>Nascondi Sezione</span>
                         <i id="guide-toggle-icon" class="fa-solid fa-chevron-up transition-transform duration-300"></i>
                     </button>
                 </div>
@@ -541,6 +541,216 @@
         </div>
         </section>
 
+
+         <!-- SEZIONE PROGRESSIONE SU VIE A PIÙ TIRI (MULTIPITCH) -->
+        <section class="mb-8">
+        <div class="bg-gradient-to-br from-slate-900 to-sky-950 text-white rounded-2xl shadow-md overflow-hidden border-l-8 border-amber-400">
+            
+            <!-- Intestazione della Sezione (Cliccabile) -->
+            <div onclick="toggleMultiTiri()" class="p-5 sm:p-6 bg-slate-800/60 border-b border-slate-700/80 flex flex-wrap items-center justify-between gap-4 cursor-pointer hover:bg-slate-800/90 transition">
+            <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-amber-400 text-slate-900 font-bold flex items-center justify-center text-lg shadow-sm">
+                <i class="fa-solid fa-mountain-sun text-slate-950"></i>
+                </div>
+                <div>
+                <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 bg-amber-400/20 text-amber-300 text-[10px] font-bold rounded uppercase tracking-wider border border-amber-400/30">Ambiente & Alpinismo</span>
+                </div>
+                <h2 class="text-lg sm:text-xl font-bold text-white tracking-wide mt-0.5">
+                    Progressione della cordata su Vie di più tiri
+                </h2>
+                </div>
+            </div>
+            
+            <button id="multitiri-toggle-btn" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-xs font-semibold text-slate-200 flex items-center gap-2 shadow-sm transition">
+                <span>Mostra Sezione</span>
+                <i id="multitiri-toggle-icon" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+            </button>
+            </div>
+
+            <!-- Contenuto Espandibile -->
+            <div id="multitiri-content" class="p-6 hidden transition-all duration-300">
+            
+            <!-- BOX CONFRONTO MONOTIRO VS PIÙ TIRI -->
+            <div class="mb-6 p-4 rounded-xl bg-slate-800/80 border border-slate-700">
+                <h3 class="text-sm font-bold text-amber-400 flex items-center gap-2 mb-2">
+                <i class="fa-solid fa-code-compare"></i> Monotiro vs Via a Più Tiri
+                </h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                Mentre in falesia l'assicuratore rimane sempre a terra e la cordata si risolve in un'unica salita con discesa in moulinette dalla sosta, su più tiri <strong>l'intera cordata sale in parete</strong> alternandosi o mantenendo i ruoli, arrestandosi di volta in volta su punti di sosta da allestire.
+                </p>
+            </div>
+
+            <!-- FASI DELLA PROGRESSIONE (ELENCO PUNTATO) -->
+            <div class="mb-6 space-y-3">
+                <h4 class="text-xs font-bold text-sky-300 uppercase tracking-wider">Fasi principali della progressione:</h4>
+                
+                <ul class="space-y-2.5 text-xs text-slate-200">
+               <li class="flex items-start gap-2.5 bg-slate-800/40 p-2.5 rounded-lg border border-slate-700/50">
+                    <span class="w-5 h-5 rounded-full bg-amber-400 text-slate-950 font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5">0</span>
+                    <span>Dopo aver filato la corda, i componenti della cordata si legano ai rispettivi capi con il nodo a otto: </span>
+                </li>
+                <li class="flex items-start gap-2.5 bg-slate-800/40 p-2.5 rounded-lg border border-slate-700/50">
+                    <span class="w-5 h-5 rounded-full bg-amber-400 text-slate-950 font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5">1</span>
+                    <span><strong>Capocordata parte (Primo di cordata):</strong> Sale la prima lunghezza piazzando rinvii e protezioni, moschettonando la corda proveniente dall'assicuratore in sosta.</span>
+                    <span><strong>Il Secondo di cordata:</strong> assicura il compagno con un freno, reverso/secchiello.</span>
+                </li>
+
+                <li class="flex items-start gap-2.5 bg-slate-800/40 p-2.5 rounded-lg border border-slate-700/50">
+                    <span class="w-5 h-5 rounded-full bg-amber-400 text-slate-950 font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5">2</span>
+                    <span><strong>Costruzione Sosta & Autoassicurazione:</strong> Arrivato al termine del tiro, il primo allestisce il punto di sosta e si autoassicura con nodo barcaiolo e al termine comunica con <em>"Mollo tutto!"</em>.
+                    Il secondo toglie la corda dal freno e comunica  <em>"Recupera!"</em></span>
+                </li>
+
+                <li class="flex items-start gap-2.5 bg-slate-800/40 p-2.5 rounded-lg border border-slate-700/50">
+                    <span class="w-5 h-5 rounded-full bg-amber-400 text-slate-950 font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5">3</span>
+                    <span><strong>Recupero Secondo di cordata:</strong> Il primo recupera la corda in eccesso, assicura il secondo inserendo la corda nel reverso/piastrina sulla sosta e dà il comando <em>"Parti!"</em> al secondo.</span>
+                </li>
+
+                <li class="flex items-start gap-2.5 bg-slate-800/40 p-2.5 rounded-lg border border-slate-700/50">
+                    <span class="w-5 h-5 rounded-full bg-amber-400 text-slate-950 font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5">4</span>
+                    <span><strong>Salita del Secondo:</strong> Il secondo sale recuperando i rinvii/protezioni. Giunto in sosta, si autoassicura con nodo barcaiolo.
+                         A questo punto si valuta l'avvicendamento (tiro alternato o stesso capocordata).</span>
+                </li>
+               <li class="flex items-start gap-2.5 bg-slate-800/40 p-2.5 rounded-lg border border-slate-700/50">
+                    <span class="w-5 h-5 rounded-full bg-amber-400 text-slate-950 font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5">5</span>
+                    <span><strong>E via così:</strong> Si procede allo stesso modo fino al termine della via, <b>inserendo <u>sempre</u> un falso rinvio/moschettone sulla sosta</b>, come prima protezione.</span>
+                </li>
+                </ul>
+            </div>
+
+            <!-- SEZIONE 2 IMMAGINI ESPLICATIVE -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                
+                <!-- Immagine 1 -->
+                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 text-center">
+                <img src="img/barcaiolo.jpg" 
+                    alt="Nodo barcaiolo per autoassicurazione" 
+                    loading="lazy" 
+                    class="max-h-100 mx-auto object-contain rounded bg-white/5 p-1">
+                <span class="block text-[11px] text-amber-300 font-semibold mt-2">1. Autoassicurazione alla sosta con Nodo Barcaiolo</span>
+                </div>
+
+                <!-- Immagine 2 -->
+                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 text-center">
+                <img src="img/progressione.jpg" 
+                    alt="Progressione della cordata" 
+                    loading="lazy" 
+                    class="max-h-100 mx-auto object-contain rounded bg-white/5 p-1">
+                <span class="block text-[11px] text-amber-300 font-semibold mt-2">2. Schema Progressione della cordata ambo le fasi</span>
+                </div>
+
+            </div>
+
+            <!-- AVVISO FINALE -->
+            <div class="mt-5 pt-3 border-t border-slate-700/80 text-[11px] text-amber-300 font-semibold flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation text-amber-400 text-sm"></i>
+                <span>Sulle vie a più tiri la comunicazione verbale può essere ostacolata dal vento o altro: concordare sempre i comandi alternativi prima di partire.</span>
+            </div>
+
+            </div>
+
+        </div>
+        </section>
+
+           <!-- SEZIONE VIA FERRATA E FATTORE DI CADUTA -->
+        <section class="mb-8">
+        <div class="bg-slate-900 text-white rounded-2xl shadow-md overflow-hidden border-l-8 border-orange-500">
+            
+            <!-- Intestazione della Sezione (Cliccabile) -->
+            <div onclick="toggleFerrata()" class="p-5 sm:p-6 bg-slate-800/80 border-b border-slate-700/80 flex flex-wrap items-center justify-between gap-4 cursor-pointer hover:bg-slate-800 transition">
+            <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-orange-500 text-slate-950 font-bold flex items-center justify-center text-lg shadow-sm">
+                <i class="fa-solid fa-person-hiking text-slate-950"></i>
+                </div>
+                <div>
+                <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 bg-orange-500/20 text-orange-400 text-[10px] font-bold rounded uppercase tracking-wider border border-orange-500/30">Progressione su Cavo</span>
+                </div>
+                <h2 class="text-lg sm:text-xl font-bold text-white tracking-wide mt-0.5">
+                    Progressione su Via Ferrata e Fattore di Caduta
+                </h2>
+                </div>
+            </div>
+            
+            <button id="ferrata-toggle-btn" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-xs font-semibold text-slate-200 flex items-center gap-2 shadow-sm transition">
+                <span>Mostra Sezione</span>
+                <i id="ferrata-toggle-icon" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+            </button>
+            </div>
+
+            <!-- Contenuto Espandibile -->
+            <div id="ferrata-content" class="p-6 hidden transition-all duration-300">
+            
+            <!-- FOCUS TECNICO: IL FATTORE DI CADUTA -->
+            <div class="mb-6 p-4 rounded-xl bg-orange-950/40 border border-orange-500/40">
+                <h3 class="text-sm font-bold text-orange-400 flex items-center gap-2 mb-2">
+                <i class="fa-solid fa-triangle-exclamation"></i> Il Fattore di Caduta (FC) in Ferrata
+                </h3>
+                <p class="text-xs text-slate-200 leading-relaxed mb-3">
+                In arrampicata classica il Fattore di Caduta teorico massimo è <strong>2</strong> (altezza caduta / lunghezza corda). In via ferrata, a causa del metallo rigido e dello scivolamento dei moschettoni sul cavo fino al fittone sottostante, il Fattore di Caduta può superare ampiamente <strong>FC 5</strong>.
+                </p>
+                <div class="bg-slate-900/80 p-3 rounded-lg border border-orange-500/30 text-[11px] text-slate-300 space-y-1">
+                <p><strong class="text-orange-400">Formula:</strong> FC = Altezza della caduta / Lunghezza di corda/longe</p>
+                <p class="text-slate-400">Senza un kit da ferrata con dissipatore omologato che assorbisce la forza di arresto in fase di caduta, si possono rischiare traumi fatali.</p>
+                </div>
+            </div>
+
+            <!-- REGOLE DI PROGRESSIONE -->
+            <div class="mb-6 space-y-3">
+                <h4 class="text-xs font-bold text-orange-300 uppercase tracking-wider">Regole fondamentali di sicurezza:</h4>
+                
+                <ul class="space-y-2.5 text-xs text-slate-200">
+                <li class="flex items-start gap-2.5 bg-slate-800/40 p-2.5 rounded-lg border border-slate-700/50">
+                    <i class="fa-solid fa-circle-check text-orange-400 mt-0.5 text-[12px] shrink-0"></i>
+                    <span><strong>Uso esclusivo del Kit da Ferrata omologato:</strong> Composto da due bracci elastici, moschettoni a leva/ghiera automatica e dissipatore di energia a tessitura lacerabile.</span>
+                </li>
+
+                <li class="flex items-start gap-2.5 bg-slate-800/40 p-2.5 rounded-lg border border-slate-700/50">
+                    <i class="fa-solid fa-circle-check text-orange-400 mt-0.5 text-[12px] shrink-0"></i>
+                    <span><strong>Progressione sempre con 2 moschettoni agganciati al cavo:</strong> tengo una mano sul cavo sotto ai moschettoni così da farli salire facilmente.</span>
+                </li>
+
+                <li class="flex items-start gap-2.5 bg-slate-800/40 p-2.5 rounded-lg border border-slate-700/50">
+                    <i class="fa-solid fa-circle-check text-orange-400 mt-0.5 text-[12px] shrink-0"></i>
+                    <span><strong>Distanziamento tra escursionisti:</strong> Tra una persona e l'altra deve esserci sempre almeno un'intera tratta di cavo libera (tra un fittone e l'altro) per evitare che una caduta travolga chi segue.</span>
+                </li>
+
+                <li class="flex items-start gap-2.5 bg-slate-800/40 p-2.5 rounded-lg border border-slate-700/50">
+                    <i class="fa-solid fa-circle-check text-orange-400 mt-0.5 text-[12px] shrink-0"></i>
+                    <span><strong>Longe di riposo integrativa:</strong> Premesso che ci si può appendere ai fittoni in qualsiasi momento tarmite i moschettoni del kit da ferrata, 
+                        è possibile anche inserire un rinvio o moschettone a ghiera sull'apposti anello presente nei kit da ferrata per potersi riposare direttamente sui fittoni in partricolare sui traversi.</span>
+                </li>
+                </ul>
+            </div>
+
+            <!-- SEZIONE 2 IMMAGINI ESPLICATIVE -->
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-4">
+                
+                <!-- Immagine 1 -->
+                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 text-center">
+                <img src="img/fc.png" 
+                    alt="Schema del fattore di caduta in via ferrata" 
+                    loading="lazy" 
+                    class="max-h-100 mx-auto object-contain rounded bg-white/5 p-1">
+                <span class="block text-[11px] text-orange-400 font-semibold mt-2">1. Dinamica della caduta su cavo</span>
+                <span class="block text-[10px] text-slate-400 mt-0.5">Scivolamento del moschettone fino al fittone e apertura del dissipatore</span>
+                </div>
+
+            </div>
+
+            <!-- AVVISO FINALE -->
+            <div class="mt-5 pt-3 border-t border-slate-700/80 text-[11px] text-orange-300 font-semibold flex items-center gap-2">
+                <i class="fa-solid fa-helmet-safety text-orange-400 text-sm"></i>
+                <span>Può essere utile indossare dei guanti da ferrata per proteggere le mani dalle sfilacciature del cavo d'acciaio o avere più grip sul cavo.</span>
+            </div>
+
+            </div>
+
+        </div>
+        </section>
+
+
         <!-- WELCOME BANNER SCHEDE -->
         <div class="mb-6 bg-white border border-sky-200 rounded-2xl p-5 shadow-sm relative overflow-hidden">
             <div class="absolute right-0 top-0 translate-x-4 -translate-y-4 opacity-5 pointer-events-none">
@@ -618,7 +828,7 @@
     <!-- FOOTER -->
     <footer class="bg-white border-t border-sky-200 py-6 mt-12 text-center text-xs text-slate-500">
         <div class="max-w-6xl mx-auto px-4 space-y-2">
-            <p><i class="fa-solid fa-graduation-cap text-amber-500 mr-1"></i> <strong>&copy; 2026 GM Venezia</strong> - Guida Falesie Arrampicata. Ad uso didattico e informativo per gli allievi.</p>
+            <p><i class="fa-solid fa-graduation-cap text-amber-500 mr-1"></i> <strong>&copy; 2026 GM Venezia</strong> - Guida ad uso didattico e informativo per gli allievi.</p>
         </div>
     </footer>
 
@@ -629,6 +839,17 @@
     </div>
 
     <script>
+
+                    // Stato iniziale di default per tutte le sezioni didattiche (es. chiuse all'avvio)
+            const sezioniDaChiudere = ['guide-content', 'manovre-content', 'multitiri-content', 'ferrata-content'];
+
+            sezioniDaChiudere.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.add('hidden'); // Nasconde il contenuto
+                }
+            });
+
         const falesieData = [
             {
                 id: 'erto-no-big',
@@ -1046,6 +1267,39 @@
                 if (btnText) btnText.textContent = 'Mostra Sezione';
             }
         }
+
+            function toggleMultiTiri() {
+                const content = document.getElementById('multitiri-content');
+                const icon = document.getElementById('multitiri-toggle-icon');
+                const btnText = document.querySelector('#multitiri-toggle-btn span');
+
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                    if (btnText) btnText.textContent = 'Nascondi Sezione';
+                } else {
+                    content.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                    if (btnText) btnText.textContent = 'Mostra Sezione';
+                }
+            }
+
+        function toggleFerrata() {
+            const content = document.getElementById('ferrata-content');
+            const icon = document.getElementById('ferrata-toggle-icon');
+            const btnText = document.querySelector('#ferrata-toggle-btn span');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+                if (btnText) btnText.textContent = 'Nascondi Sezione';
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+                if (btnText) btnText.textContent = 'Mostra Sezione';
+            }
+        }
+
     </script>
 
 </body>
