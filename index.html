@@ -750,6 +750,135 @@
         </div>
         </section>
 
+        <!-- SEZIONE VIE LUNGHE PERCORSE -->
+        <section class="mb-8">
+        <div class="bg-white border border-sky-200 rounded-2xl shadow-sm overflow-hidden transition-all duration-300">
+            
+            <!-- Intestazione della Sezione (Cliccabile) -->
+            <div onclick="toggleVieLunghe()" class="p-5 sm:p-6 bg-sky-50/70 border-b border-sky-200 flex flex-wrap items-center justify-between gap-4 cursor-pointer hover:bg-sky-100/60 transition">
+            <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-amber-400 text-amber-950 border border-amber-300 flex items-center justify-center text-lg shadow-sm">
+                <i class="fa-solid fa-mountain text-amber-950"></i>
+                </div>
+                <div>
+                <h2 class="text-lg sm:text-xl font-bold text-sky-900 tracking-wide flex items-center gap-2">
+                    Le Vie Lunghe che abbiamo fatto assieme
+                </h2>
+                </div>
+            </div>
+            
+            <button id="vielunghe-toggle-btn" class="px-3.5 py-1.5 rounded-lg bg-white hover:bg-slate-50 border border-sky-200 text-xs font-semibold text-sky-700 flex items-center gap-2 shadow-sm transition">
+                <span>Mostra Sezione</span>
+                <i id="vielunghe-toggle-icon" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+            </button>
+            </div>
+
+            <!-- Contenuto Espandibile (Griglia delle 4 Vie) -->
+            <div id="vielunghe-content" class="p-6 hidden transition-all duration-300">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Via 1 -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-sky-100 flex flex-col justify-between">
+                <div>
+                    <!-- Immagine della via -->
+                    <div class="mb-3 bg-white p-2 rounded-lg border border-sky-200 text-center">
+                    <img src="img/vipera.jpeg" alt="Foto Via 1" loading="lazy" class="h-100 w-full object-cover rounded">
+                    </div>
+                    
+                    <!-- Intestazione con Nome e Badge Difficoltà/Lunghezza -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2 border-b border-sky-200 pb-2">
+                    <h3 class="font-bold text-sky-950 text-base">1. Via della Vipera</h3>
+                    <div class="flex items-center gap-1.5">
+                        <span class="px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-bold rounded">IV</span>
+                        <span class="px-2 py-0.5 bg-sky-100 text-sky-900 text-[10px] font-bold rounded">150m</span>
+                    </div>
+                    </div>
+
+                    <!-- Descrizione -->
+                    <p class="text-xs text-slate-700 leading-relaxed mb-3">
+                    Visto che eravate bravi, perchè non andare a fare una vietta bella ? 
+                    </p>
+                </div>
+                <div class="pt-2 border-t border-sky-200 text-[11px] text-slate-500 flex items-center gap-1">
+                    <i class="fa-solid fa-location-dot text-amber-500"></i>
+                    <span>Punta Dallago - Gruppo Averau</span>
+                </div>
+                </div>
+
+                <!-- Via 2 -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-sky-100 flex flex-col justify-between">
+                <div>
+                    <div class="mb-3 bg-white p-2 rounded-lg border border-sky-200 text-center">
+                    <img src="img/alalazo.jpeg" alt="Foto Via 2" loading="lazy" class="h-100 w-full object-cover rounded">
+                    </div>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2 border-b border-sky-200 pb-2">
+                    <h3 class="font-bold text-sky-950 text-base">2. Alalazo</h3>
+                    <div class="flex items-center gap-1.5">
+                        <span class="px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-bold rounded">IV+</span>
+                        <span class="px-2 py-0.5 bg-sky-100 text-sky-900 text-[10px] font-bold rounded">100m</span>
+                    </div>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed mb-3">
+                    Vietta facile e carina dopo aver preso freddo in falesia, dopo qualche monotiro. 
+                    </p>
+                </div>
+                <div class="pt-2 border-t border-sky-200 text-[11px] text-slate-500 flex items-center gap-1">
+                    <i class="fa-solid fa-location-dot text-amber-500"></i>
+                    <span>Val d'Adige, località Tessari - Roda del Canal</span>
+                </div>
+                </div>
+
+                <!-- Via 3 -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-sky-100 flex flex-col justify-between">
+                <div>
+                    <div class="mb-3 bg-white p-2 rounded-lg border border-sky-200 text-center">
+                    <img src="img/parete-san-paolo-nord-monte.jpg" alt="Foto Via 3" loading="lazy" class="h-200 w-full object-cover rounded">
+                    </div>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2 border-b border-sky-200 pb-2">
+                    <h3 class="font-bold text-sky-950 text-base">3. Nome della Via</h3>
+                    <div class="flex items-center gap-1.5">
+                        <span class="px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-bold rounded">V+</span>
+                        <span class="px-2 py-0.5 bg-sky-100 text-sky-900 text-[10px] font-bold rounded">100m</span>
+                    </div>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed mb-3">
+                    Prima via ad Arco, quella prima dello shopping, breve, carina e un po' croccante.
+                    </p>
+                </div>
+                <div class="pt-2 border-t border-sky-200 text-[11px] text-slate-500 flex items-center gap-1">
+                    <i class="fa-solid fa-location-dot text-amber-500"></i>
+                    <span>Arco - Parete di San Paolo</span>
+                </div>
+                </div>
+
+                <!-- Via 4 -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-sky-100 flex flex-col justify-between">
+                <div>
+                    <div class="mb-3 bg-white p-2 rounded-lg border border-sky-200 text-center">
+                    <img src="img/claudia22.jpeg" alt="Foto Via 4" loading="lazy" class="h-100 w-full object-cover rounded">
+                    </div>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2 border-b border-sky-200 pb-2">
+                    <h3 class="font-bold text-sky-950 text-base">4. Via Claudia 22</h3>
+                    <div class="flex items-center gap-1.5">
+                        <span class="px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-bold rounded">V+</span>
+                        <span class="px-2 py-0.5 bg-sky-100 text-sky-900 text-[10px] font-bold rounded">250m</span>
+                    </div>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed mb-3">
+                    Via molto bella, panorama top, degna conclusione di un percorso di apprendimento verticale.
+                    </p>
+                </div>
+                <div class="pt-2 border-t border-sky-200 text-[11px] text-slate-500 flex items-center gap-1">
+                    <i class="fa-solid fa-location-dot text-amber-500"></i>
+                    <span>Parete di Pezol</span>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+        </div>
+        </section>
 
         <!-- WELCOME BANNER SCHEDE -->
         <div class="mb-6 bg-white border border-sky-200 rounded-2xl p-5 shadow-sm relative overflow-hidden">
@@ -1288,6 +1417,22 @@
             const content = document.getElementById('ferrata-content');
             const icon = document.getElementById('ferrata-toggle-icon');
             const btnText = document.querySelector('#ferrata-toggle-btn span');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+                if (btnText) btnText.textContent = 'Nascondi Sezione';
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+                if (btnText) btnText.textContent = 'Mostra Sezione';
+            }
+        }
+
+        function toggleVieLunghe() {
+            const content = document.getElementById('vielunghe-content');
+            const icon = document.getElementById('vielunghe-toggle-icon');
+            const btnText = document.querySelector('#vielunghe-toggle-btn span');
 
             if (content.classList.contains('hidden')) {
                 content.classList.remove('hidden');
